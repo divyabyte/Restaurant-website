@@ -23,7 +23,7 @@
                         {{ method_field('PUT') }}
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="username"  class="form-control">
+                            <input type="text" name="name"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Category</label>
@@ -39,6 +39,13 @@
                                 <option value="law-gate">Law-gate</option>
                                 <option value="lpu">LPU</option>
                             </select>
+                        </div>
+                        <label>Image</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="img" class="custom-file-input" />
+                                <label class="custom-file-label">Choose File</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Owner</label>

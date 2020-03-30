@@ -34,6 +34,24 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" name="price"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select name="type" class="form-control">
+                                <option value="chinese">Chinese</option>
+                                <option value="quick Bites">Quick Bites</option>
+                                <option value="breads">Breads</option>
+                                <option value="main Course">Main Course</option>
+                                <option value="dessert">Dessert</option>
+                                <option value="thali">Thali</option>
+                                <option value="non-veg">Non-veg</option>
+                                <option value="beverage">Beverage</option>
+                                <option value="italian">Italian</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Restaurant</label>
                             <select name="res_id" class="form-control">
                                 @foreach($users as $row)

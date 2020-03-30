@@ -32,6 +32,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Category</th>
+                <th>Type</th>
+                <th>Price</th>
                 <th>Res_Id</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -42,6 +44,8 @@
                   <td>{{ $row->id}}</td>
                   <td>{{ $row->name}}</td>
                   <td>{{ $row->category}}</td>
+                  <td>{{ $row->type}}</td>
+                  <td>{{ $row->price}}</td>
                   <td>{{ $row->res_id}}</td>
                   <td>
                     <a href="/menu-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>

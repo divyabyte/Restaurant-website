@@ -15,11 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//users 
+
+Route::get('/res-law', 'Users\UserDashboardController@res1');
+Route::get('/user-profile-edit', 'Users\UserDashboardController@profileEdit');
+Route::put('/user-profile-update/{id}', 'Users\UserDashboardController@profileUpdate');
+Route::get('/res-lpu', 'Users\UserDashboardController@res');
+Route::get('/user-profile', 'Users\UserDashboardController@profile');
+Route::get('/res-view/{id}', 'Users\UserDashboardController@resView');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// admin
 Route::group(['middleware' => ['auth','admin']], function(){
 
     Route::get('/dashboard', function () {
@@ -37,7 +46,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::get('/res-edit/{id}', 'Admin\DashboardController@resedit');
     Route::put('/res-update/{id}', 'Admin\DashboardController@resupdate');
     Route::get('/res-add', 'Admin\DashboardController@resadd');
-    Route::put('/res-new-add', 'Admin\DashboardController@resnewadd');
+    Route::post('/res-new-add', 'Admin\DashboardController@resnewadd');
 
     Route::get('/menu', 'Admin\DashboardController@menu');
     Route::delete('/menu-delete/{id}','Admin\DashboardController@menudelete');
@@ -46,5 +55,6 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::get('/menu-add', 'Admin\DashboardController@menuadd');
     Route::put('/menu-new-add', 'Admin\DashboardController@menunewadd');
 
-    Route::get('/res', 'Admin\DashboardController@res');
+   
 });
+

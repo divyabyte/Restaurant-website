@@ -71,10 +71,23 @@ class DashboardController extends Controller
     public function resnewadd(Request $request){
 
         $users = new Restaurant;
-        $users->name = $request->input('username');
+        $users->name = $request->input('name');
         $users->category = $request->input('category');
         $users->location = $request->input('location');
         $users->user_id = $request->input('user_id');
+
+        if($request->hasfile('img'))
+        {
+            $file = $request->file('img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). '.' . $extension;
+            $file->move('assets/img1/',$filename);
+            $users->img = $filename;
+        }else{
+            return $request;
+            $users ->img = '';
+        }
+
         $users->save();
 
         return redirect('/restaurant')->with('status','Your Data is Added');
@@ -86,6 +99,7 @@ class DashboardController extends Controller
         $users->name = $request->input('username');
         $users->category = $request->input('category');
         $users->location = $request->input('location');
+        $users->img = $request->input('img');
         $users->update();
 
         return redirect('/restaurant')->with('status','Your Data is Updated');
@@ -127,6 +141,8 @@ class DashboardController extends Controller
         $users->name = $request->input('username');
         $users->category = $request->input('category');
         $users->res_id = $request->input('res_id');
+        $users->type = $request->input('type');
+        $users->price = $request->input('price');
         $users->save();
 
         return redirect('/menu')->with('status','Your Data is Added');
@@ -137,14 +153,18 @@ class DashboardController extends Controller
         $users = Menu::find($id);
         $users->name = $request->input('username');
         $users->category = $request->input('category');
+        $users->type = $request->input('type');
+        $users->price = $request->input('price');
         $users->update();
 
         return redirect('/menu')->with('status','Your Data is Updated');
     }
 
-    public function res(){
+   
 
-        $users = Restaurant::all();
-        return view('admin.restaurant')->with('users',$users);
-    }
+    // public function res1(){
+
+    //     $users = Restaurant::all();
+    //     return view('admin.res-lpu')->with('users',$users);
+    // }
 }

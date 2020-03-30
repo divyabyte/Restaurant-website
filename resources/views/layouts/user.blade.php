@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Foody &mdash; Website Template by Colorlib</title>
+    <title>Eumsig</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
@@ -27,12 +27,32 @@
     <header role="banner">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Eumsig</a>
+          <a class="navbar-brand" href="#">Eumsig</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
+      
+
+        <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            </div>
       </nav>
+
     </header>
     <!-- END header -->
 
@@ -52,14 +72,13 @@
           Select Location
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">LPU</a>
-          <a class="dropdown-item" href="#">Law Gate</a>
+          <a class="dropdown-item" href="/res-lpu">LPU</a>
+          <a class="dropdown-item" href="/res-law">Law Gate</a>
         </div>
       </div>
     </div>
     <div class="modal-footer">
     <a type="button" class="btn btn-warning" data-dismiss="modal">Close</a>
-    <a type="button" href="/res" class="btn btn-secondary">Save changes</a>
     </div>
     </div>
     </div>
@@ -113,7 +132,7 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-md-12 mb-5 mb-lg-0 col-lg-4 text-left service-block" data-aos="fade-up" data-aos-delay="">
-          <img src="{{url('assets/img/ccc.png ')}}" height="150px" width="150px">
+          <img src="{{url('assets/img/ccc.png ')}}" class="center" height="150px" width="150px">
             <h3 class="mt-4">Explore Restaurants</h3>
           </div>
           <div class="col-md-12 mb-5 mb-lg-0 col-lg-4 text-left service-block" data-aos="fade-up" data-aos-delay="100">
@@ -121,8 +140,8 @@
             <h3 class="mt-4">Browse Menu</h3>
           </div>
           <div class="col-md-12 mb-5 mb-lg-0 col-lg-4 text-left service-block" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{url('assets/img/destination.jpg ')}}" height="150px" width="150px">
-            <h3 class="mt-4">Track Your Order</h3>
+          <img src="{{url('assets/img/order.png ')}}" height="150px" width="150px">
+            <h3 class="mt-4">Order Your Meal</h3>
           </div>
         </div>
       </div>
