@@ -12,20 +12,21 @@ class UserDashboardController extends Controller
 {
     public function res(){
 
-        $users = Restaurant::all();
-        return view('users.res-lpu')->with('users',$users);
+        $restaurant = Restaurant::all();
+        return view('users.res-lpu')->with('restaurant',$restaurant);
     }
 
     public function res1(){
 
-        $users = Restaurant::all();
-        return view('users.res-law')->with('users',$users);
+        $restaurant = Restaurant::all();
+        return view('users.res-law')->with('restaurant',$restaurant);
     }
 
     public function resView($id){
 
-        $users = Restaurant::all();         
-        return view('users.res-view')->with('users',$users);
+        $restaurant = Restaurant::with('menus')->where('id',$id)->get();  
+
+        return view('users.res-view')->with('restaurant',$restaurant);
     }
 
     public function profile(){

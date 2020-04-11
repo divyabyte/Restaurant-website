@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../assets/css1/animate.css">
     <link rel="stylesheet" href="../assets/css1/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css1/aos.css">
-    <link rel="stylesheet" href="../assets/css1/new.css">
 
     <link rel="stylesheet" href="../assets/css1/magnific-popup.css">
 
@@ -39,7 +38,7 @@
                   {{ Auth::user()->name }} 
                 </p>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Orders</a>
+                <a class="dropdown-item" href="#">Cart</a>
                 <a class="dropdown-item" href="/user-profile">Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
@@ -70,29 +69,309 @@
 
       <div class="row">
 
-        <div class="col-md-4 text-center">
+      <div class="col-md-1">
+      </div>
 
+        <div class="col-md-2 text-left">
           <ul style="list-style-type: none;">
-            <li><a href="#">Chinese</a></li>
-            <li><a href="#">Quick Bites</a></li>
-            <li><a href="#">Breads</a></li>
-            <li><a href="#">Main Course</a></li>
-            <li><a href="#">Dessert</a></li>
-            <li><a href="#">Thali</a></li>
-            <li><a href="#">Non-veg</a></li>
-            <li><a href="#">Beverage</a></li>
-            <li><a href="#">Italian</a></li>
+          <li><a href="#chinese" >Chinese</a><li>
+            <li><a href="#quick-bites" >Quick Bites</a><li>
+            <li><a href="#breads" >Breads</a><li>
+            <li><a href="#dessert" >Dessert</a><li>
+            <li><a href="#main-course" >Main-Course</a><li>
+            <li><a href="#italian" >Italian</a><li>
+            <li><a href="#thali" >Thali</a><li>
+            <li><a href="#non-veg" >Non-veg</a><li>
+            <li><a href="#beverage" >Beverages</a><li>
           </ul>
-
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-7">
 
           <ul style="list-style-type: none;">
-           
-          </ul>
 
+            <!-- Chinese -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'chinese')
+                <section id="chinese">
+                  <h4>Chinese</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)     
+                @if( $row->menus[$i]->type  == 'chinese')
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif              
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+        
+            <!-- Quick-Bites -->
+            <ul style="list-style-type: none;">   
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'quick Bites')
+                <section id="quick-bites">
+                  <h4>Quick-Bites</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++) 
+                @if( $row->menus[$i]->type  == 'quick Bites')         
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Breads -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'breads')
+                <section id="breads">
+                  <h4>Breads</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'breads')         
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Dessert -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'dessert')
+                <section id="dessert">
+                  <h4>Dessert</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'dessert')         
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Main Course -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'main Course')
+                <section id="main-course">
+                  <h4>Main-course</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'main Course')         
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Thali -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'thali')
+                <section id="thali">
+                  <h4>Thali</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'thali')               
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Non-veg -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'non-veg')
+                <section id="non-veg">
+                  <h4>Non-veg</h4>
+                </section>
+                <hr>
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'non-veg')         
+                <div class="row pb-2" >  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Italian -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'italian')
+                  <section id="italian">
+                    <h4>Italian</h4>
+                  </section>
+                  <hr>
+                  @for ($i = 0; $i < count($row->menus); $i++)
+                  @if( $row->menus[$i]->type  == 'italian')         
+                  <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                  @endif
+                  @endfor
+                  <hr>
+                  @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+            <!-- Beverage -->
+            <ul style="list-style-type: none;">
+              @foreach($restaurant as $row)
+              @for ($i = 0; $i < count($row->menus); $i++)
+              @if( $row->menus[$i]->type  == 'beverage')
+                <section id="beverages">
+                  <h4>Beverage</h4>
+                </section>
+                <hr> 
+                @for ($i = 0; $i < count($row->menus); $i++)
+                @if( $row->menus[$i]->type  == 'beverage')         
+                <div class="row pb-2">  
+                    <div class="col-md-10">    
+                    <li class="text-uppercase text-dark"> <pre>{{$row->menus[$i]->name}} </pre></li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-success">
+                    <button type="submit" class="btn btn-success" ><img src="../assets/img/add.png" height="20px" width="20px"></button>
+                    </li> </div>
+                    <div class="col-md-1"> 
+                    <li class="text-danger"><button type="submit" class="btn btn-danger"><img src="../assets/img/remove.png" height="20px" width="20px"></button>
+                    </li></div>
+                </div>
+                @endif
+                @endfor
+                <hr>
+                @break
+              @endif
+              @endfor
+              @endforeach
+            </ul>
+
+          </ul>
         </div>
+
 
       </div>
 

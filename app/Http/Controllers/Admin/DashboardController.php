@@ -42,15 +42,15 @@ class DashboardController extends Controller
 
     public function restaurant(){
 
-        $users = Restaurant::all();
-        return view('admin.restaurant')->with('users',$users);
+        $restaurant = Restaurant::all();
+        return view('admin.restaurant')->with('restaurant',$restaurant);
     }
 
     public function resdelete($id){
 
        
-        $users = Restaurant::findOrFail($id);
-        $users->delete();
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->delete();
        
         return redirect('/restaurant')->with('status','Your Data is Deleted');
     }
@@ -58,8 +58,8 @@ class DashboardController extends Controller
    
     public function resedit(Request $request, $id){
 
-        $users = Restaurant::findOrFail($id);
-        return view('admin.res-edit')->with('users',$users);
+        $restaurant = Restaurant::findOrFail($id);
+        return view('admin.res-edit')->with('restaurant',$restaurant);
     }
 
     public function resadd(){
@@ -70,37 +70,38 @@ class DashboardController extends Controller
 
     public function resnewadd(Request $request){
 
-        $users = new Restaurant;
-        $users->name = $request->input('name');
-        $users->category = $request->input('category');
-        $users->location = $request->input('location');
-        $users->user_id = $request->input('user_id');
-
+        $restaurant = new Restaurant;
+        $restaurant->name = $request->input('name');
+        $restaurant->category = $request->input('category');
+        $restaurant->location = $request->input('location');
+        $restaurant->user_id = $request->input('user_id');
+        
         if($request->hasfile('img'))
         {
             $file = $request->file('img');
             $extension = $file->getClientOriginalExtension();
             $filename = time(). '.' . $extension;
-            $file->move('assets/img1/',$filename);
-            $users->img = $filename;
+            $file->move('upload/img1/',$filename);
+            $restaurant->img = $filename;
         }else{
             return $request;
-            $users ->img = '';
+            $restaurant ->img = '';
         }
 
-        $users->save();
+        $restaurant->save();
 
         return redirect('/restaurant')->with('status','Your Data is Added');
     }
 
     public function resupdate(Request $request, $id){
 
-        $users = Restaurant::find($id);
-        $users->name = $request->input('username');
-        $users->category = $request->input('category');
-        $users->location = $request->input('location');
-        $users->img = $request->input('img');
-        $users->update();
+        $restaurant = Restaurant::find($id);
+        $restaurant->name = $request->input('username');
+        $restaurant->category = $request->input('category');
+        $restaurant->location = $request->input('location');
+
+
+        $restaurant->update();
 
         return redirect('/restaurant')->with('status','Your Data is Updated');
     }
@@ -109,15 +110,15 @@ class DashboardController extends Controller
 
     public function menu(){
 
-        $users = Menu::all();
-        return view('admin.menu')->with('users',$users);
+        $menu = Menu::all();
+        return view('admin.menu')->with('menu',$menu);
     }
 
     public function menudelete($id){
 
        
-        $users = Menu::findOrFail($id);
-        $users->delete();
+        $menu = Menu::findOrFail($id);
+        $menu->delete();
        
         return redirect('/menu')->with('status','Your Data is Deleted');
     }
@@ -125,46 +126,38 @@ class DashboardController extends Controller
    
     public function menuedit(Request $request, $id){
 
-        $users = Menu::findOrFail($id);
-        return view('admin.menu-edit')->with('users',$users);
+        $menu = Menu::findOrFail($id);
+        return view('admin.menu-edit')->with('menu',$menu);
     }
 
     public function menuadd(){
 
-        $users = Restaurant::all();
-        return view('admin.menu-add')->with('users',$users);
+        $restaurant = Restaurant::all();
+        return view('admin.menu-add')->with('restaurant',$restaurant);
     }
 
     public function menunewadd(Request $request){
 
-        $users = new Menu;
-        $users->name = $request->input('username');
-        $users->category = $request->input('category');
-        $users->res_id = $request->input('res_id');
-        $users->type = $request->input('type');
-        $users->price = $request->input('price');
-        $users->save();
+        $menu = new Menu;
+        $menu->name = $request->input('username');
+        $menu->category = $request->input('category');
+        $menu->res_id = $request->input('res_id');
+        $menu->type = $request->input('type');
+        $menu->price = $request->input('price');
+        $menu->save();
 
         return redirect('/menu')->with('status','Your Data is Added');
     }
 
     public function menuupdate(Request $request, $id){
 
-        $users = Menu::find($id);
-        $users->name = $request->input('username');
-        $users->category = $request->input('category');
-        $users->type = $request->input('type');
-        $users->price = $request->input('price');
-        $users->update();
+        $menu = Menu::find($id);
+        $menu->name = $request->input('username');
+        $menu->category = $request->input('category');
+        $menu->type = $request->input('type');
+        $menu->price = $request->input('price');
+        $menu->update();
 
         return redirect('/menu')->with('status','Your Data is Updated');
     }
-
-   
-
-    // public function res1(){
-
-    //     $users = Restaurant::all();
-    //     return view('admin.res-lpu')->with('users',$users);
-    // }
 }

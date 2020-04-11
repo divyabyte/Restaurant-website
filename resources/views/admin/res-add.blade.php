@@ -18,9 +18,9 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                        <form action="/res-new-add/"   method="POST">
+                        <form action="/res-new-add/" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{ method_field('PUT') }}
+                        {{ method_field('POST') }}
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" name="name"  class="form-control">

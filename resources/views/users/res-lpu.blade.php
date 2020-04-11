@@ -95,7 +95,7 @@
 
     <div class="section container mt-2 py-5 ">
       <div class="row">
-        @foreach($users as $row)
+        @foreach($restaurant as $row)
         
         @if($row->location == 'lpu')
       
@@ -104,7 +104,7 @@
               <div class="card card-block mt-4 ml-4">
               <h5 class="card-title mt-3 mb-3 text-uppercase text-center font-weight-bold">{{ $row->name}}</h5>
               <div class="container">
-                <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset">
+              <img src="{{'upload/img1/'.$row->img}}" alt="image">
               </div>
                   @if($row->category == 'veg')
                     <p class="text-success text-center">veg</p>

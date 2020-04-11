@@ -38,7 +38,7 @@
                 <th>Delete</th>
               </thead>
               <tbody>
-                @foreach($users as $row)
+                @foreach($restaurant as $row)
                   <tr>
                   <td>{{ $row->id}}</td>
                   <td>{{ $row->name}}</td>

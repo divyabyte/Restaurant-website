@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label>Restaurant</label>
                             <select name="res_id" class="form-control">
-                                @foreach($users as $row)
+                                @foreach($restaurant as $row)
                                     <option value="{{$row->id}}">{{ $row->name}}</option>
                                 @endforeach
                             </select>

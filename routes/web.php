@@ -22,6 +22,7 @@ Route::get('/user-profile-edit', 'Users\UserDashboardController@profileEdit');
 Route::put('/user-profile-update/{id}', 'Users\UserDashboardController@profileUpdate');
 Route::get('/res-lpu', 'Users\UserDashboardController@res');
 Route::get('/user-profile', 'Users\UserDashboardController@profile');
+
 Route::get('/res-view/{id}', 'Users\UserDashboardController@resView');
 
 Auth::routes();
@@ -33,7 +34,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    }); 
 
 
     Route::get('/role-register', 'Admin\DashboardController@registered');
@@ -44,7 +45,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::get('/restaurant', 'Admin\DashboardController@restaurant');
     Route::delete('/res-delete/{id}','Admin\DashboardController@resdelete');
     Route::get('/res-edit/{id}', 'Admin\DashboardController@resedit');
-    Route::put('/res-update/{id}', 'Admin\DashboardController@resupdate');
+    Route::post('/res-update/{id}', 'Admin\DashboardController@resupdate');
     Route::get('/res-add', 'Admin\DashboardController@resadd');
     Route::post('/res-new-add', 'Admin\DashboardController@resnewadd');
 

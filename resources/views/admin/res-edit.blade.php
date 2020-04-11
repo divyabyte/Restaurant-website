@@ -18,12 +18,12 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                        <form action="/res-update/{{ $users->id }}"   method="POST">
+                        <form action="/res-update/{{ $restaurant->id }}"   method="POST">
                         {{ csrf_field() }}
-                        {{ method_field('PUT') }}
+                        {{ method_field('POST') }}
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="username" value="{{ $users->name }}" class="form-control">
+                            <input type="text" name="username" value="{{ $restaurant->name }}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Category</label>
